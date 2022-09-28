@@ -39,7 +39,7 @@ const privateMessage = async (req, res) => {
             if(!userFromDB.refreshToken) return res.sendStatus(403)
 
              //Issue a new access token to client
-              if(decodedRefreshToken.username === userFromDB.username) {
+              if(clientRefreshToken === userFromDB.refreshToken) {
                 const newAccessToken = jwt.sign({id:userFromDB._id,username:userFromDB.username}, process.env.ACCESS_TOKEN_SECRETE,{      
                   expiresIn:'20s' 
                  })
