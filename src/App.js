@@ -12,12 +12,13 @@ import RequireAuth from "./RequireAuth/RequireAuth";
 import Loading from "./components/Loading/Loading";
 import Unauthorised from "./components/Unauthorised/Unauthorised";
 import Register from "./components/Register/Register";
-
+import ToastNotification from "./components/toastNotification/ToastNotification";
 function App() {
   return (
     <div className="App">
       <AuthProvider>
         <Header />
+         <ToastNotification />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route

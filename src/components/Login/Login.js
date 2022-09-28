@@ -17,11 +17,15 @@ function Login() {
   const location = useLocation();
   const [loginInfo, setLoginInfo] = useState({username:"", password:""});
   const navigate = useNavigate();
-  const {auth, setAuth} = useAuthContext()
+  const {setAuth , setToastNotofication} = useAuthContext()
   const {mutate,isLoading} = useMutation(login,{
     onSuccess: (response) => {
       setAuth(response)
-      navigate('/')
+      setToastNotofication(true)
+    const toastSetTimeoutID =  setTimeout(() => {
+        setToastNotofication(false)
+      }, 5000);
+      navigate('/', {state:{toastSetTimeoutID}})
     },
     onError: (error) => console.log(error.response.data.error)
   })

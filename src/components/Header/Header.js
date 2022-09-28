@@ -19,7 +19,9 @@ function Header() {
     onSuccess: () => {
       logout()
     },
-    onError: (error) => console.log(error.response.data.error)
+    onError: (error) => {
+      logout()
+      console.log(error.response.data.error)}
   })
 
   const logoutHandler = () => {
