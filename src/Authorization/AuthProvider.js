@@ -5,7 +5,7 @@ const usersContext = createContext(null);
 function AuthProvider({ children }) {
   const [auth, setAuth] = useState(null);
   const [roles, setRoles] = useState([]);
-  const [toastNotofication, setToastNotofication] = useState(false);
+  const [toastNotofication, setToastNotofication] = useState({active:false, state: "", message:"", theme:"light"});
   
 
   console.log(auth);

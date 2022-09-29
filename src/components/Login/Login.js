@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import {useMutation} from 'react-query'
 import { axiosBase } from "../../Axios/axiosBase";
 import Loading from '../Loading/Loading'
+import useSetToast from "../../utils/useSetToast";
 
 const login = async (loginData) => {
   const loginURL = `/login`;
@@ -13,6 +14,7 @@ const login = async (loginData) => {
 }
 
 function Login() {
+  const setToast = useSetToast()
   const usernameRef = useRef();
   const location = useLocation();
   const [loginInfo, setLoginInfo] = useState({username:"", password:""});
@@ -21,11 +23,7 @@ function Login() {
   const {mutate,isLoading} = useMutation(login,{
     onSuccess: (response) => {
       setAuth(response)
-      setToastNotofication(true)
-    const toastSetTimeoutID =  setTimeout(() => {
-        setToastNotofication(false)
-      }, 5000);
-      navigate('/', {state:{toastSetTimeoutID}})
+     setToast(true, 'Success', 'You are logged in successfuly')
     },
     onError: (error) => console.log(error.response.data.error)
   })
