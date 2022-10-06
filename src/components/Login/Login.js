@@ -25,7 +25,10 @@ function Login() {
       setAuth(response)
      setToast(true, 'Success', 'You are logged in successfuly')
     },
-    onError: (error) => console.log(error.response.data.error)
+    onError: (error) => {
+      console.log(error.response.data.error)
+      setToast(true, 'Error', `${error.response.data.error}`)
+    }
   })
   useEffect(() => {
     usernameRef.current.focus();

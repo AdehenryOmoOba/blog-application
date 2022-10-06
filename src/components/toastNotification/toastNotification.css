@@ -16,6 +16,9 @@
 .toast.active{
     transform: translateX(0%);
 }
+.toast.active.error{
+    background-color: #efbbbb;
+}
 .progress{
     position: absolute;
     bottom: 0;
@@ -38,6 +41,9 @@
 .progress.active::after{
     animation: progress 5s linear forwards;  
 }
+.progress.active.error::after{
+    background-color: #ff0000;
+}
 @keyframes progress {
     100%{
         right: 100%;
@@ -53,14 +59,19 @@
     /* theme color  */
     border-left: 0.3rem solid #4070f4;
 }
+.status-icon.error{
+    border-left: 0.3rem solid #ff0000;
+}
 .status-icon .icon{
     height: 3rem;
     width: 3rem;
-     /* theme color  */
     background-color: #4070f4;
     border-radius: 50%;
     display: grid;
     place-content: center;
+}
+.status-icon .icon.error{
+    background-color: #f93434;
 }
 .content{
     min-width: 75%;
@@ -78,12 +89,18 @@
     /* theme color  */
     color: #107d10;
 }
+.content h4.error{
+    color: #f93434;
+}
 .content p{
     font-family: 'Nunito', sans-serif;
     font-size: 1.5rem;
     /* theme color  */
     color: #4070f4;
     margin: 0;
+}
+.content p.error{
+    color: #430c0c;
 }
 .close{
     min-width: 10%;
